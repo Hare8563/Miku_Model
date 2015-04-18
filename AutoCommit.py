@@ -17,9 +17,11 @@ class ChangeHandler(FileSystemEventHandler):
 		os.system('git commit -m "'+os.path.basename(event.src_path)+'を作成"')
 	def on_modified(self, event):
 		print '"'+ os.path.basename(event.src_path)  + '"が変更されました。'
+		os.system('git add .')
 		os.system('git commit -m "'+os.path.basename(event.src_path)+'を変更"')
 	def on_deleted(self, event):
 		print '"'+ os.path.basename(event.src_path)  + '"が削除されました。'
+		os.system('git add .')
 		os.system('git commit -m "'+os.path.basename(event.src_path)+'を削除"')
 
 argvs = sys.argv
