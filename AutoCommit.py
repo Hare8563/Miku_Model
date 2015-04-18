@@ -14,15 +14,15 @@ class ChangeHandler(FileSystemEventHandler):
 	def on_created(self, event):
 		print '"'+ os.path.basename(event.src_path) + '"が作成されました。Addしてからコミットします'
 		os.system('git add .')
-		os.system('git commit -m "'+os.path.basename(event.src_path)+'を作成"')
+		os.system('git commit -m "'+os.path.basename(event.src_path)+'を作成。\n時間:'+time.ctime()+'"')
 	def on_modified(self, event):
 		print '"'+ os.path.basename(event.src_path)  + '"が変更されました。'
 		os.system('git add .')
-		os.system('git commit -m "'+os.path.basename(event.src_path)+'を変更"')
+		os.system('git commit -m "'+os.path.basename(event.src_path)+'を変更。\n時間:'+time.ctime()+'"')
 	def on_deleted(self, event):
 		print '"'+ os.path.basename(event.src_path)  + '"が削除されました。'
 		os.system('git add .')
-		os.system('git commit -m "'+os.path.basename(event.src_path)+'を削除"')
+		os.system('git commit -m "'+os.path.basename(event.src_path)+'を削除。\n時間:'+time.ctime()+'"')
 
 argvs = sys.argv
 argc = len(argvs)
