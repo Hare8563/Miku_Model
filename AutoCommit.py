@@ -13,6 +13,7 @@ def getext(filename):
 class ChangeHandler(FileSystemEventHandler):
 	def on_created(self, event):
 		print '"'+ event.src_path + '"が作成されました。Addしてからコミットします'
+<<<<<<< HEAD
 		os.system('git commit -a'+ event.src_path + ' -m "'+os.path.basename(event.src_path)+'を作成"')
 	def on_modified(self, event):
 		print '"'+ event.src_path + '"が変更されました。'
@@ -20,6 +21,15 @@ class ChangeHandler(FileSystemEventHandler):
 	def on_deleted(self, event):
 		print '"'+ event.src_path + '"が削除されました。'
 		os.system('git commit -m "'+os.path.basename(event.src_path)+'を削除"')
+=======
+		os.system('git commit -am "'+event.src_path+'を作成"')
+	def on_modified(self, event):
+		print '"'+ event.src_path + '"が変更されました。'
+		os.system('git commit -m "'+event.src_path+'を変更"')
+	def on_deleted(self, event):
+		print '"'+ event.src_path + '"が削除されました。'
+		os.system('git commit -m "'+event.src_path+'を削除"')
+>>>>>>> a6dd59e2a1491b2f6b4684dd5969cc8c7e8da686
 
 argvs = sys.argv
 argc = len(argvs)
